@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd"
+>
+
+    <!--自动扫描com.guet.myblog包下标注@Controller等注解的类控制器类-->
+    <context:component-scan base-package="cn.edu.guet.cake.blog.web"/>
+
+    <!--注解驱动，自动帮我们注入最新版的处理器映射器和处理器适配器-->
+    <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
+    <mvc:annotation-driven/>
+
+    <!--配置日期转换器-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+    <!--<property name="converters">-->
+    <!--<set>-->
+    <!--<bean class="cn.guet.navigator.web.converter.DateConverter"/>-->
+    <!--</set>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为5MB -->
+        <property name="maxUploadSize" value="5242880"/>
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+    <!--加载config.properties配置文件-->
+    <context:property-placeholder location="classpath:config.properties"/>
+
+    <!--配置C3P0连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--驱动-->
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <!--URL-->
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <!--用户名-->
+        <property name="user" value="${jdbc.username}"/>
+        <!--密码-->
+        <property name="password" value="${jdbc.password}"/>
+        <!--初始化时池的大小-->
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+        <!--池中最多的连接数-->
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+        <!--池中最少的连接数-->
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+        <!--连接池为数据源缓存的PreparedStatement的总数。由于PreparedStatement属于单个Connection,
+        所以这个数量应该根据应用中平均连接数乘以每个连接的平均PreparedStatement来计算。
+        同时maxStatementsPerConnection的配置无效。default : 0（不建议使用）-->
+        <property name="maxStatements" value="${jdbc.maxStatements}"/>
+        <!--连接池为数据源单个Connection缓存的PreparedStatement数，这个配置比maxStatements更有意义，因为它缓存的服务对象是单个数据连接，
+        如果设置的好，肯定是可以提高性能的。为0的时候不缓存。default : 0（看情况而论）-->
+        <property name="maxStatementsPerConnection" value="${jdbc.maxStatementsPerConnection}"/>
+        <!--连接池在无空闲连接可用时一次性创建的新数据库连接数-->
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+        <!--连接池在获得新连接失败时重试的次数，如果小于等于0则无限重试直至连接获得成功。default : 30（建议使用）-->
+        <property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+        <!--:连接池在回收数据库连接时是否自动提交事务。如果为false，则会回滚未提交的事务，如果为true，则会自动提交事务。default : false（不建议使用）-->
+        <property name="autoCommitOnClose" value="${jdbc.autoCommitOnClose}"/>
+        <!--连接池在获得新连接时的间隔时间 -->
+        <property name="acquireRetryDelay" value="${jdbc.acquireRetryDelay}"/>
+        <!--这个配置主要是为了快速减轻连接池的负载，比如连接池中连接数因为某次数据访问高峰导致创建了很多数据连接，但是后面的时间段需要的数据库连接数很少，
+        需要快速释放，必须小于maxIdleTime。其实这个没必要配置，maxIdleTime已经配置了。default : 0 单位 s（不建议使用）-->
+        <property name="maxIdleTimeExcessConnections" value="${jdbc.maxIdleTimeExcessConnections}"/>
+        <!--连接的最大空闲时间，如果超过这个时间，某个数据库连接还没有被使用，则会断开掉这个连接。如果为0，则永远不会断开连接,即回收此连接。
+        default : 0 单位 s（建议使用）-->
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+        <!--:用来配置测试空闲连接的间隔时间。测试方式还是上面的两种之一，可以用来解决MySQL8小时断开连接的问题。因为它保证连接池会每隔一定时间对空闲连接进行一次测试，
+        从而保证有效的空闲连接能每隔一定时间访问一次数据库，将于MySQL8小时无会话的状态打破。为0则不测试。default : 0(建议使用)-->
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+        <!--如果为true，则当连接获取失败时自动关闭数据源，除非重新启动应用程序。所以一般不用。default : false（不建议使用）-->
+        <property name="breakAfterAcquireFailure" value="${jdbc.breakAfterAcquireFailure}"/>
+    </bean>
+
+    <!--qlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--Mybatis配置文件-->
+        <property name="configLocation"
+                  value="classpath:mybatis/SqlMapConfig.xml"/>
+        <!--mapper.xml所在位置-->
+        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+        <!--指定需要使用别名的PO类所在的包-->
+        <!--<property name="typeAliasesPackage"-->
+        <!--value="cn.edu.guet.cake.blog.web.pojo" />-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            params=count=countSql
+                            autoRuntimeDialect=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--mapper接口所在的包-->
+        <property name="basePackage" value="cn.edu.guet.cake.blog.web.mapper"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>
