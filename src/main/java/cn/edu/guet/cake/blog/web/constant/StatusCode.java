@@ -40,4 +40,8 @@ public class StatusCode implements Serializable {
      */
     public static final int SERVER_INNER_ERROR = 500;
 
+    public static final int UPLOAD_OK = 1;
+
+    public static final int UPLOAD_ERROR = 0;
+
 }

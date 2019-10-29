@@ -81,7 +81,7 @@
                             type: 1,
                             title: "完善文章信息",
                             skin: 'layui-layer-rim', //加上边框
-                            area: ['600px', '650px'], //宽高
+                            area: ['50%', '90%'], //宽高
                             content: dynamicContent()
                         });
 
@@ -107,12 +107,31 @@
                         //重新渲染form，否则动态生成的content中的元素没有效果
                         form.render();
 
-                        //拖拽上传
-                        upload.render({
-                            elem: '#test10'
-                            , url: '/upload/'
+                        //普通图片上传
+                        var uploadInst = upload.render({
+                            elem: '#test1'
+                            , url: 'upload/blog-pic'
+                            , before: function (obj) {
+                                //预读本地文件示例，不支持ie8
+                                obj.preview(function (index, file, result) {
+                                    $('#demo1').attr('src', result); //图片链接（base64）
+                                });
+                            }
                             , done: function (res) {
-                                console.log(res)
+                                //如果上传失败
+                                if (res.success == 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                $("#itemPicture").val(res.id);
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText.find('.demo-reload').on('click', function () {
+                                    uploadInst.upload();
+                                });
                             }
                         });
 
@@ -168,7 +187,7 @@
                     '    <legend>完善文章信息</legend>\n' +
                     '</fieldset>\n' +
                     '\n' +
-                    '<div class="site-text site-block" style="width: 90%;height: 80%;">\n' +
+                    '<div class="site-text site-block" style="width: 90%;height: 90%;">\n' +
                     '\n' +
                     '    <form class="layui-form">\n' +
                     '\n' +
@@ -204,21 +223,25 @@
                     '        </div>\n' +
                     '\n' +
                     '        <div class="layui-form-item">\n' +
-                    '            <label class="layui-form-label">标题图片</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                                    '<div class="layui-upload-drag" id="test10">\n' +
-                                    '    <i class="layui-icon"></i>\n' +
-                                    '    <p>点击上传，或将文件拖拽到此处</p>\n' +
-                                    '</div>\n' +
-                    '            </div>\n' +
-                    '        </div>\n' +
-                    '\n' +
-                    '        <div class="layui-form-item">\n' +
-                    '            <label class="layui-form-label">主题</label>\n' +
+                    '            <label class="layui-form-label">文章主题</label>\n' +
                     '            <div class="layui-input-block">\n' +
                     '                <select name="topic" lay-verify="required">\n' +
                     '                    <option value=""></option>\n' + topicsContent +
                     '                </select>\n' +
+                    '            </div>\n' +
+                    '        </div>\n' +
+                    '\n' +
+                    '        <div class="layui-form-item">\n' +
+                    '            <label class="layui-form-label">文章标题图</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '<div class="layui-upload">\n' +
+                    '  <button type="button" class="layui-btn" id="test1">上传图片</button>\n' +
+                    '  <div class="layui-upload-list">\n' +
+                    '    <img class="layui-upload-img" id="demo1" style="width:auto;height:auto;max-width:100%;max-height:100%;">\n' +
+                    '    <p id="demoText"></p>\n' +
+                    '                   <input type="text" name="itemPicture" id="itemPicture" style="display: none;">\n' +
+                    '  </div>\n' +
+                    '</div>\n' +
                     '            </div>\n' +
                     '        </div>\n' +
                     '\n' +

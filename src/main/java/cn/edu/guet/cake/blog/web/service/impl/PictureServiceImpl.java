@@ -22,8 +22,13 @@ public class PictureServiceImpl implements PictureService {
      * @throws Exception
      */
     @Override
-    public void savePicture(Picture picture) throws Exception {
-        pictureMapper.insert(picture);
+    public int savePicture(Picture picture) throws Exception {
+        return pictureMapper.insert(picture);
+    }
+
+    @Override
+    public Picture getPictureById(Integer id) throws Exception {
+        return pictureMapper.selectByPrimaryKey(id);
     }
 
 }

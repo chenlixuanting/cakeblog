@@ -13,7 +13,7 @@ public class Constant implements Serializable {
 
     public static final String BLOG_PICTURE_SAVE_PATH = "/blog-pic";
 
-    public static final String WEB_ROOT = "http://localhost:8080/cake-blog/blog-pic/";
+    public static final String WEB_ROOT = "http://localhost:8080/cakeblog/blog-pic/";
 
     public static final Integer PAGE_SUCCESS = 0;
 

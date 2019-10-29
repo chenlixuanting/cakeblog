@@ -9,7 +9,7 @@ var builder = function (result) {
                 content += "<div class=\"post post-layout-list\" data-aos=\"fade-up\">\n" +
                     "                    <div class=\"status_list_item icon_kyubo\">\n" +
                     "                        <div class=\"status_user\"\n" +
-                    "                             style=\"background-image: url(${basePath}assets/user/statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);\">\n" +
+                    "                             style=\"background-image: url(" + result[i].itemPictureUrl + ");\">\n" +
                     "                            <div class=\"status_section\">\n" +
                     "                                <a href=\"article/" + result[i].id + "\" class=\"status_btn\">" + result[i].title + "</a>\n" +
                     "                                <p class=\"section_p\">" + result[i].summary + "</p>\n" +
@@ -26,7 +26,7 @@ var builder = function (result) {
                     "                                <div class=\"col-sm-3\">\n" +
                     "                                    <a rel=\"nofollow\" href=\"detail\">\n" +
                     "                                        <div class=\"review-item-img\"\n" +
-                    "                                             style=\"background-image: url(${basePath}assets/user/statics/images/diego-ph-249471-2-800x1000.jpg);\"></div>\n" +
+                    "                                             style=\"background-image: url(" + result[i].itemPictureUrl + ");\"></div>\n" +
                     "                                    </a>\n" +
                     "                                </div>\n" +
                     "                                <div class=\"col-sm-9 flex-xs-middle\">\n" +
@@ -39,7 +39,7 @@ var builder = function (result) {
                     "                            </div>\n" +
                     "                            <div class=\"review-bg-wrapper\">\n" +
                     "                                <div class=\"bg-blur\"\n" +
-                    "                                     style=\"background-image: url(${basePath}assets/user/statics/images/diego-ph-249471-2-800x1000.jpg);\"></div>\n" +
+                    "                                     style=\"background-image: url(" + result[i].itemPictureUrl + ");\"></div>\n" +
                     "                            </div>\n" +
                     "                        </div>\n" +
                     "                        <div class=\"post-container\">\n" +
@@ -58,7 +58,7 @@ var builder = function (result) {
                     "                    <div class=\"post-album\">\n" +
                     "                        <div class=\"row content\">\n" +
                     "                            <div class=\"bg\"\n" +
-                    "                                 style=\"background-image: url(${basePath}assets/user/statics/images/IMG_0150.jpg);\"></div>\n" +
+                    "                                 style=\"background-image: url(" + result[i].itemPictureUrl + ");\"></div>\n" +
                     "                            <div class=\"contentext flex-xs-middle\">\n" +
                     "                                <div class=\"album-title\">\n" +
                     "                                    <a href=\"article/" + result[i].id + "\">" + result[i].title + "</a>\n" +

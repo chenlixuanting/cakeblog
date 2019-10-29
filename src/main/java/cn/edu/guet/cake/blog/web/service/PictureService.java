@@ -13,6 +13,8 @@ public interface PictureService {
      * @param picture
      * @throws Exception
      */
-    void savePicture(Picture picture) throws Exception;
+    int savePicture(Picture picture) throws Exception;
+
+    Picture getPictureById(Integer id) throws Exception;
 
 }
