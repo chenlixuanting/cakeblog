@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cakeblog">
+    <output-path>$PROJECT_DIR$/out/artifacts/cakeblog</output-path>
+    <root id="archive" name="cakeblog.war">
+      <element id="artifact" artifact-name="cake-blog:war exploded" />
+    </root>
+  </artifact>
+</component>

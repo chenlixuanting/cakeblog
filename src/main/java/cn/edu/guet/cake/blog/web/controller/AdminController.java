@@ -33,6 +33,16 @@ public class AdminController {
     private LabelService labelService;
 
     /**
+     * 友情链接管理
+     *
+     * @return
+     */
+    @RequestMapping(value = "/link", method = RequestMethod.GET)
+    public String link() {
+        return "admin/link";
+    }
+
+    /**
      * 管理员登录界面
      *
      * @return

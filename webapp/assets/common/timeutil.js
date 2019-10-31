@@ -1,5 +1,7 @@
 function timestamp2Date(timestamp) {
-    var oldTime = (new Date(timestamp)).getTime();
-    var curTime = new Date(oldTime).format("yyyy-MM-dd");
-    return curTime;
+    var d = new Date(timestamp); //根据时间戳生成的时间对象
+    var date = (d.getFullYear()) + "-" +
+        (d.getMonth() + 1) + "-" +
+        (d.getDate());
+    return date;
 }

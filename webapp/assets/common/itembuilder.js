@@ -3,6 +3,7 @@ var builder = function (result) {
     var content = '';
 
     for (var i = 0; i < result.length; i++) {
+
         //随机获取item的显示样式
         switch (random()) {
             case 1:
@@ -33,7 +34,7 @@ var builder = function (result) {
                     "                                    <div class=\"review-item-title\">\n" +
                     "                                        <a href=\"article/" + result[i].id + "\" rel=\"bookmark\">" + result[i].title + "</a>\n" +
                     "                                    </div>\n" +
-                    "                                    <div class=\"review-item-creator\"><b>发布日期：</b>" + result[i].updateTime + "</div>\n" +
+                    "                                    <div class=\"review-item-creator\"><b>发布日期：</b>" + timestamp2Date(result[i].updatetime) + "</div>\n" +
                     "                                    <span class=\"review-item-info\"><b>总浏览量：</b>1203 reads</span>\n" +
                     "                                </div>\n" +
                     "                            </div>\n" +
@@ -63,7 +64,7 @@ var builder = function (result) {
                     "                                <div class=\"album-title\">\n" +
                     "                                    <a href=\"article/" + result[i].id + "\">" + result[i].title + "</a>\n" +
                     "                                </div>\n" +
-                    "                                <h5 class=\"review-item-creator\"><b>发布日期：</b>" + result[i].updateTime + "</h5>\n" +
+                    "                                <h5 class=\"review-item-creator\"><b>发布日期：</b>" + timestamp2Date(result[i].updatetime) + "</h5>\n" +
                     "                                <div class=\"album-content\">" + result[i].summary + "</div>\n" +
                     "                            </div>\n" +
                     "                            <div class=\"album-thumb-width flex-xs-middle\">\n" +

@@ -255,6 +255,7 @@
                     '    </form>\n' +
                     '</div>'
                 });
+
                 //重新渲染form，否则动态生成的content中的元素没有效果
                 form.render();
                 form.on('submit(formDemo)', function (data) {

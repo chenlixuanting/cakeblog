@@ -182,6 +182,7 @@
     <%--不要引admin/static下的layiu.js--%>
     <script type="text/javascript" src="assets/admin/layui/layui.js"></script>
     <script type="text/javascript" src="assets/common/itembuilder.js"></script>
+    <script type="text/javascript" src="assets/common/timeutil.js"></script>
 </footer>
 </body>
 <script type="text/javascript">

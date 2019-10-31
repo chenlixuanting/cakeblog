@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.cake.blog.web.mapper.LinkMapper">
+
+    <resultMap id="BaseResultMap" type="cn.edu.guet.cake.blog.web.pojo.Link">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updatetime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <association column="picture" property="picture"
+                     select="cn.edu.guet.cake.blog.web.mapper.PictureMapper.selectByPrimaryKey"/>
+        <association column="admin" property="admin"
+                     select="cn.edu.guet.cake.blog.web.mapper.AdminMapper.selectByPrimaryKey"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.edu.guet.cake.blog.web.pojo.Link">
+        insert into link (id, url, author,
+        createTime, updateTime,picture,admin)
+        values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+        #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},#{picture.id,jdbcType=INTEGER},#{admin.id,jdbcType=INTEGER})
+    </insert>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="int">
+        select id,url,author,createTime,updateTime from link where id = #{id}
+    </select>
+
+</mapper>

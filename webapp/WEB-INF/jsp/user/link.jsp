@@ -9,10 +9,10 @@
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>响应式简单个性个人博客模板</title>
+    <title>友情连接</title>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="shortcut icon" href="assets/user/statics/icon/favicon.ico">
+    <%--<link rel="shortcut icon" href="assets/user/statics/icon/favicon.ico">--%>
     <link rel="stylesheet" type="text/css" href="assets/user/statics/css/index.css" media="all"/>
 </head>
 
@@ -162,6 +162,61 @@
                                                                class='avatar avatar-64 photo' height='64' width='64'/>
                                 <div class="userItem-name">
                                     <a class="link link--primary" href="#" target="_blank">Dearzd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userItem">
+                        <div class="userItem--inner">
+                            <div class="userItem-content"><img alt=''
+                                                               src='assets/user/statics/images/d52a89521eb0cdb4efb343fb63ce3986.jpeg'
+                                                               class='avatar avatar-64 photo' height='64' width='64'/>
+                                <div class="userItem-name">
+                                    <a class="link link--primary" href="#" target="_blank">Meow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userItem">
+                        <div class="userItem--inner">
+                            <div class="userItem-content"><img alt=''
+                                                               src='assets/user/statics/images/d52a89521eb0cdb4efb343fb63ce3986.jpeg'
+                                                               class='avatar avatar-64 photo' height='64' width='64'/>
+                                <div class="userItem-name">
+                                    <a class="link link--primary" href="#" target="_blank">Meow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userItem">
+                        <div class="userItem--inner">
+                            <div class="userItem-content"><img alt=''
+                                                               src='assets/user/statics/images/d52a89521eb0cdb4efb343fb63ce3986.jpeg'
+                                                               class='avatar avatar-64 photo' height='64' width='64'/>
+                                <div class="userItem-name">
+                                    <a class="link link--primary" href="#" target="_blank">Meow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userItem">
+                        <div class="userItem--inner">
+                            <div class="userItem-content"><img alt=''
+                                                               src='assets/user/statics/images/d52a89521eb0cdb4efb343fb63ce3986.jpeg'
+                                                               class='avatar avatar-64 photo' height='64' width='64'/>
+                                <div class="userItem-name">
+                                    <a class="link link--primary" href="#" target="_blank">Meow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userItem">
+                        <div class="userItem--inner">
+                            <div class="userItem-content"><img alt=''
+                                                               src='assets/user/statics/images/d52a89521eb0cdb4efb343fb63ce3986.jpeg'
+                                                               class='avatar avatar-64 photo' height='64' width='64'/>
+                                <div class="userItem-name">
+                                    <a class="link link--primary" href="#" target="_blank">Meow</a>
                                 </div>
                             </div>
                         </div>

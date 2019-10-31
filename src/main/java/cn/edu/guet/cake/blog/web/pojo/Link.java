@@ -15,10 +15,12 @@ public class Link implements Serializable {
 
     private static final long serialVersionUID = -3815608986900383268L;
 
-    private String id;
+    private Integer id;
     private String url;
-    private Picture photo;
-    private Admin creator;
+    private String author;
+
+    private Picture picture;
+    private Admin admin;
 
     private Timestamp createTime;
     private Timestamp updateTime;

@@ -1,6 +1,5 @@
 package cn.edu.guet.cake.blog.web.aspect;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
